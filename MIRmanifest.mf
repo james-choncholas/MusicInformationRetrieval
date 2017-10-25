@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Class-Path: . MIR_lib/matlabcontrol-4.1.0.jar MIR_lib/matlabcontrol-4.
+ 1.0-javadoc.jar MIR_lib/core.jar MIR_lib/jl1.0.jar MIR_lib/jsminim.ja
+ r MIR_lib/minim.jar MIR_lib/mp3spi1.9.4.jar MIR_lib/tritonus_aos.jar 
+ MIR_lib/tritonus_share.jar MIR_lib/gluegen-rt-natives-linux-amd64.jar
+  MIR_lib/gluegen-rt-natives-linux-armv6hf.jar MIR_lib/gluegen-rt-nati
+ ves-linux-i586.jar MIR_lib/gluegen-rt-natives-macosx-universal.jar MI
+ R_lib/gluegen-rt-natives-windows-amd64.jar MIR_lib/gluegen-rt-natives
+ -windows-i586.jar MIR_lib/gluegen-rt.jar MIR_lib/jogl-all-natives-lin
+ ux-amd64.jar MIR_lib/jogl-all-natives-linux-armv6hf.jar MIR_lib/jogl-
+ all-natives-linux-i586.jar MIR_lib/jogl-all-natives-macosx-universal.
+ jar MIR_lib/jogl-all-natives-windows-amd64.jar MIR_lib/jogl-all-nativ
+ es-windows-i586.jar MIR_lib/jogl-all.jar MIR_lib/javaml-0.1.7.jar
+Main-Class: MIR
+

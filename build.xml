@@ -1,0 +1,182 @@
+<!-- only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
+<project name="MIR" default="default" basedir=".">
+    <description>Builds, tests, and runs the project MIR.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
+
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:              called before javac compilation
+      -post-compile:             called after javac compilation
+      -pre-compile-single:       called before javac compilation of single file
+      -post-compile-single:      called after javac compilation of single file
+      -pre-compile-test:         called before javac compilation of JUnit tests
+      -post-compile-test:        called after javac compilation of JUnit tests
+      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -post-compile-test-single: called after javac compilation of single JUunit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:               called after cleaning build products
+
+    (Targets beginning with '-' are not intended to be called on their own.)
+
+    Example of inserting an obfuscator after compilation could look like this:
+
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
+
+
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are: 
+
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar:                  JAR building
+      run:                      execution of project 
+      -javadoc-build:           Javadoc generation
+      test-report:              JUnit report generation
+
+    An example of overriding the target for project execution could look like this:
+
+        <target name="run" depends="MIR-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that the overridden target depends on the jar target and not only on 
+    the compile target as the regular run target does. Again, for a list of available 
+    properties which you can use, check the target you are overriding in the
+    nbproject/build-impl.xml file. 
+
+    -->
+<!-- Uncomment for an attempt at native system distribution
+<target name="-post-jar">
+    
+    <echo> Extracting amd64 natives from jars </echo>
+    <unjar src="lib/ProcessingCoreLib/gluegen-rt-natives-windows-amd64.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/gluegen-rt-natives-linux-amd64.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/gluegen-rt-natives-macosx-universal.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/jogl-all-natives-linux-amd64.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/jogl-all-natives-macosx-universal.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/jogl-all-natives-windows-amd64.jar" dest="dist/natives/amd64bit" />
+    
+    <echo> Extracting i586 natives from jars </echo>
+    <unjar src="lib/ProcessingCoreLib/gluegen-rt-natives-linux-i586.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/gluegen-rt-natives-windows-i586.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/jogl-all-natives-linux-i586.jar" dest="dist/natives/amd64bit" />
+    <unjar src="lib/ProcessingCoreLib/jogl-all-natives-windows-i586.jar" dest="dist/natives/amd64bit" />
+
+    
+    
+    <echo> Creating MIR Executable </echo>
+    <jar jarfile="dist/MIRexecutable.jar" filesetmanifest="mergewithoutmain">
+        
+        <fileset dir="C:\Users\Jim\Software\workspaceJava\MIR\build\classes"/>
+    
+        <zipfileset src="lib/matlabcontrol-4.1.0.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/core.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/jl1.0.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/jsminim.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/minim.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/mp3spi1.9.4.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/tritonus_aos.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/tritonus_share.jar" excludes="META-INF/*" />
+
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt-natives-linux-amd64.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt-natives-linux-armv6hf.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt-natives-linux-i586.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt-natives-macosx-universal.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt-natives-windows-amd64.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt-natives-windows-i586.jar" excludes="META-INF/*" />
+
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt.jar" excludes="META-INF/*" />
+
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all-natives-linux-amd64.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all-natives-linux-armv6hf.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all-natives-linux-i586.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all-natives-macosx-universal.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all-natives-windows-amd64.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all-natives-windows-i586.jar" excludes="META-INF/*" />
+
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/javaml-0.1.7/javaml-0.1.7.jar" excludes="META-INF/*" />
+        
+        
+        <fileset file="dist/natives/*.*" />
+
+        <manifest>
+
+            <attribute name="Main-Class" value="MIR"/>
+
+            <attribute name="Class-Path" value="."/>
+        </manifest>
+  </jar>
+</target>
+-->
+
+<!-- Uncomment for attempt at including all libs but putting natives in manifest
+<target name="-post-jar">
+    
+    <echo> Creating MIR Executable </echo>
+    <jar jarfile="dist/MIRexecutable.jar" manifest="MIRmanifest.MF" >
+        
+        <fileset dir="C:\Users\Jim\Software\workspaceJava\MIR\build\classes"/>
+    
+        <zipfileset src="lib/matlabcontrol-4.1.0.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/core.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/jl1.0.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/jsminim.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/minim.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/mp3spi1.9.4.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/tritonus_aos.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/minim/tritonus_share.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/gluegen-rt.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/ProcessingCoreLib/jogl-all.jar" excludes="META-INF/*" />
+        <zipfileset src="lib/javaml-0.1.7/javaml-0.1.7.jar" excludes="META-INF/*" />
+  </jar>
+</target>
+-->
+
+<target name="-do-jar">
+    <echo> Copying Necessary Files</echo>
+    <copy todir="dist/MIR_lib">
+        <fileset dir="MIR_lib_condensed" includes="*.*" />
+    </copy>
+    <copy todir="dist/MATLAB">
+        <fileset dir="MATLAB" includes="*" />
+    </copy>
+    <copy todir="dist/storedData">
+        <fileset dir="storedData" />
+    </copy>
+    <copy todir="dist">
+        <fileset file="songInfo.txt" />
+    </copy>
+    <copy todir="dist">
+        <fileset file="README.txt" />
+    </copy>
+    
+    <echo> Creating MIR Executable </echo>
+    <jar jarfile="dist/MIRexecutable.jar" manifest="MIRmanifest.MF" >
+        <!--<fileset dir="C:\Users\Jim\Software\workspaceJava\MIR\build\classes"/>-->
+        <fileset dir="build\classes"/>
+    </jar>
+</target>
+
+</project>
